@@ -7,11 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.moduth.blockcanary.BlockCanary
 
 class MainActivity : AppCompatActivity() {
-    val view = findViewById<View>(R.id.view)
+    lateinit var view : View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        view = findViewById(R.id.view)
 
         // 传入我们上面创建的AppBlockCanaryContext
         //BlockCanary.install(this, AppBlockCanaryContext()).start()
