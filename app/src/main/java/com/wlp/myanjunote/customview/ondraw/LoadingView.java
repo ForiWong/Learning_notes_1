@@ -6,14 +6,13 @@ import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class GetSegmentView extends View {
-
+public class LoadingView extends View {
     private Path mCirclePath, mDstPath;
     private Paint mPaint;
     private PathMeasure mPathMeasure;
     private Float mCurAnimValue;
 
-    public GetSegmentView(Context context, AttributeSet attrs) {
+    public LoadingView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayerType(LAYER_TYPE_SOFTWARE, null);
 
@@ -29,7 +28,7 @@ public class GetSegmentView extends View {
         mPathMeasure = new PathMeasure(mCirclePath, true);
 
         ValueAnimator animator = ValueAnimator.ofFloat(0, 1);
-        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.setRepeatCount(ValueAnimator.INFINITE);//无限循环
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
                 mCurAnimValue = (Float) animation.getAnimatedValue();
@@ -46,11 +45,12 @@ public class GetSegmentView extends View {
         float length = mPathMeasure.getLength();
         float stop = length * mCurAnimValue;
         float start = (float) (stop - ((0.5 - Math.abs(mCurAnimValue - 0.5)) * length));
-        mDstPath.reset();
+        mDstPath.reset();//清空之前的
         canvas.drawColor(Color.WHITE);
-        mPathMeasure.getSegment(start, stop, mDstPath, true);//用于截取整个path中某个片段,通过参数startD和stopD来控制截取的长度,并将截取后的path保存到参数dst中,最后一个参数表示起始点是否使用moveTo将路径的新起始点移到结果path的起始点中,通常设置为true
+        // 用于截取整个path中某个片段,通过参数startD和stopD来控制截取的长度,并将截取后的path保存到参数dst中,
+        // 最后一个参数表示起始点是否使用moveTo将路径的新起始点移到结果path的起始点中,通常设置为true
+        mPathMeasure.getSegment(start, stop, mDstPath, true);
 
-//        mPathMeasure.getSegment(0, stop, mDstPath, true);
         canvas.drawPath(mDstPath, mPaint);
     }
 }

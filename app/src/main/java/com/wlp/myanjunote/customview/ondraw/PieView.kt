@@ -9,7 +9,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 /**
-饼图
+ 饼图
 （1）⽤ drawArc() 绘制扇形
 （2）⽤ Canvas.translate() 来移动扇形，并⽤ Canvas.save() 和 Canvas.restore() 来保存和恢复位置
 （3）⽤三⻆函数 cos 和 sin 来计算偏移

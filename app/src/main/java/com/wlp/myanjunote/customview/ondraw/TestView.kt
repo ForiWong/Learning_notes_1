@@ -18,7 +18,7 @@ Paint 画笔，设置颜色、线条粗细等
 
      |
 三	 |    四
-————————> x
+————————————> x
      |
 二	 |    一
     ↓
@@ -98,13 +98,12 @@ class TestView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
         val step = len / 18
         paint.color = Color.RED
         var point = floatArrayOf(0f, 0f)
-        for (i in 0..17){
+        for (i in 0..17){//为什么只是一个圆呢？ ——> nextContour
             //获取某处的坐标或切角
             //考虑这样的场景:要实现物体沿直接或曲线运动的效果.这就要算出某个时刻t,物体的坐标.getPosTan就是用来求坐标的
             pathMeasure.getPosTan(i * step, point, null)
             canvas.drawPoint(point[0], point[1], paint)
             Log.d(TAG, "len : $len, ${point[0]}, ${point[1]}")
         }
-
     }
 }

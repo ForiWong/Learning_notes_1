@@ -10,7 +10,7 @@ import android.graphics.PathMeasure;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class AliPayView extends View {
+public class PaySuccessView extends View {
     private Path mCirclePath, mDstPath;
     private Paint mPaint;
     private PathMeasure mPathMeasure;
@@ -19,7 +19,7 @@ public class AliPayView extends View {
     private int mCentY = 100;
     private int mRadius = 50;
 
-    public AliPayView(Context context, AttributeSet attrs) {
+    public PaySuccessView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayerType(LAYER_TYPE_SOFTWARE, null);
 
@@ -28,11 +28,12 @@ public class AliPayView extends View {
         mPaint.setStrokeWidth(4);
         mPaint.setColor(Color.BLACK);
 
-        mDstPath = new Path();
-        mCirclePath = new Path();
+        mCirclePath = new Path();//完整的路径
+        mDstPath = new Path();//绘制的目标路径
 
+        //画圆
         mCirclePath.addCircle(mCentX, mCentY, mRadius, Path.Direction.CW);
-
+        //画对勾
         mCirclePath.moveTo(mCentX - mRadius / 2, mCentY);
         mCirclePath.lineTo(mCentX, mCentY + mRadius / 2);
         mCirclePath.lineTo(mCentX + mRadius / 2, mCentY - mRadius / 3);
@@ -57,15 +58,18 @@ public class AliPayView extends View {
         super.onDraw(canvas);
         canvas.drawColor(Color.WHITE);
 
+        //mCurAnimValue 在0 -》 2
         if (mCurAnimValue < 1) {
             float stop = mPathMeasure.getLength() * mCurAnimValue;
             //从Path中来截取指定的一段路径
             mPathMeasure.getSegment(0, stop, mDstPath, true);
         } else {
-            if (!mNext) {
+            if (!mNext) {//当mCurAnimValue首次>1，需要跳转到下一条线
                 mNext = true;
+                //如果注释下面这一行，路径会出现一个小缺口
                 mPathMeasure.getSegment(0, mPathMeasure.getLength(), mDstPath, true);
-                mPathMeasure.nextContour();  //跳转到下一条曲线函数
+                mPathMeasure.nextContour();  //移动到下一条曲线函数
+                //mDstPath.reset(); //getSegment是不断往上添加到mDstPath。调用一下reset(),就知道差异了
             }
             float stop = mPathMeasure.getLength() * (mCurAnimValue - 1);
             mPathMeasure.getSegment(0, stop, mDstPath, true);

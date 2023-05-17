@@ -15,6 +15,7 @@ import android.view.View;
 
 import com.wlp.myanjunote.R;
 
+
 public class GetPosTanView extends View {
     private Path mCirclePath, mDstPath;
     private Paint mPaint;
@@ -27,7 +28,9 @@ public class GetPosTanView extends View {
     public GetPosTanView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayerType(LAYER_TYPE_SOFTWARE, null);
-        mArrawBmp = BitmapFactory.decodeResource(getResources(), R.drawable.avatar_rengwuxian);
+
+        mArrawBmp = BitmapFactory.decodeResource(getResources(), R.drawable.arrows_red);
+
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(4);
@@ -58,6 +61,7 @@ public class GetPosTanView extends View {
         canvas.drawColor(Color.WHITE);
         float length = mPathMeasure.getLength();  //计算路径长度
         float stop = length * mCurAnimValue;
+
         mDstPath.reset();
 
         mPathMeasure.getSegment(0, stop, mDstPath, true);
@@ -79,7 +83,8 @@ public class GetPosTanView extends View {
          * 箭头旋转、位移实现方式一：
          */
         Matrix matrix = new Matrix();
-        mPathMeasure.getMatrix(stop, matrix, PathMeasure.POSITION_MATRIX_FLAG | PathMeasure.TANGENT_MATRIX_FLAG);//用于的到路径上某一长度的位置以及该位置的正切值的矩阵
+        //用于的到路径上某一长度的位置以及该位置的正切值的矩阵
+        mPathMeasure.getMatrix(stop, matrix, PathMeasure.POSITION_MATRIX_FLAG | PathMeasure.TANGENT_MATRIX_FLAG);
         matrix.preTranslate(-mArrawBmp.getWidth() / 2, -mArrawBmp.getHeight() / 2);
         canvas.drawBitmap(mArrawBmp, matrix, mPaint);
     }
