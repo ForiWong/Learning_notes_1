@@ -40,7 +40,7 @@ private const val TAG = "TestView"
 class TestView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)//anti alias 抗锯齿
     private val path = Path()//路径
-    lateinit var pathMeasure: PathMeasure //路径测量
+    lateinit var pathMeasure: PathMeasure //路径测量 对path进行一些测量、计算
 
     init{
         paint.strokeWidth = 8f//设置线条宽度

@@ -42,9 +42,17 @@ class PieView(context: Context?, attrs: AttributeSet?) :
             if (index == 2) {
                 /**
                  * canvas.save()和canvas.restore()有什么用呢？
-                 * canvas.save( )：用来保存Canvas的状态
-                 * canvas.restore( )：用来恢复Canvas旋转、缩放等之后的状态，
+                 * canvas.save( )：用来保存Canvas的状态属性
+                 * canvas.restore( )：用来恢复Canvas旋转、缩放等之前的状态，
                  * 当和canvas.save( )一起使用时，恢复到canvas.save( )保存时的状态。
+                 *
+                 * 这里的状态包括矩阵的变换状态，如：平移(Translate), 缩放(Scale), 旋转(Rotate), 倾斜(Skew)，
+                 * 以及画布的裁剪区域clip。
+                 *
+                 * 当我们对画布进行旋转，缩放，平移等操作的时候其实是对特定的元素进行操作，比如图片，一个矩形等。但是
+                 * 当你用canvas的方法来进行这些操作的时候，其实是对整个画布进行了操作，那么之后在画布上的元素都会受
+                 * 到影响，所以我们在操作之前调用canvas.save()来保存画布当前的状态，当操作之后取出之前保存过的状态
+                 * ，这样就不会对其他的元素进行影响
                  **/
                 canvas.save()//
                 canvas.translate(//对canvas进行平移

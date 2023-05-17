@@ -56,6 +56,7 @@ class DashboardView(context: Context?, attrs: AttributeSet?) : View(context, att
         )
 
         val pathMeasure = PathMeasure(path, false)
+        //PathEffect就是指,用各种笔触效果来绘制一个路径。 dash就是虚线
         pathEffect = PathDashPathEffect(
             dash,
             (pathMeasure.length - DASH_WIDTH) / 20f,
@@ -71,7 +72,7 @@ class DashboardView(context: Context?, attrs: AttributeSet?) : View(context, att
 //        canvas.drawArc(
 //            width / 2f - RADIUS_2, height / 2f - RADIUS_2,
 //            width / 2f + RADIUS_2, height / 2f + RADIUS_2,
-//            //猿辅导其实角度， 圆弧的扫过角度
+//            //圆弧的其实角度， 圆弧的扫过角度
 //            90 + OPEN_ANGLE / 2f, 360 - OPEN_ANGLE, false, paint
 //        )
         /**
