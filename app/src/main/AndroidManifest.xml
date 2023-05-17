@@ -23,6 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.github.moduth.blockcanary.ui.DisplayActivity" android:exported="true"/>
+        <activity android:name=".customview.CustomViewActivity"/>
+        <activity android:name=".customview.ondraw.OnDrawActivity"/>
+
     </application>
 
 </manifest>

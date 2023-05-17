@@ -1,10 +1,12 @@
 package com.wlp.myanjunote
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.github.moduth.blockcanary.BlockCanary
+import com.wlp.myanjunote.customview.CustomViewActivity
+import com.wlp.myanjunote.customview.touch.MainActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var view : View
@@ -18,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         //BlockCanary.install(this, AppBlockCanaryContext()).start()
 
         //SystemClock.sleep()
+
+        findViewById<TextView>(R.id.to_custom_view).setOnClickListener {
+            startActivity(Intent(this, CustomViewActivity::class.java))
+        }
     }
 
     fun doSomething(v: View?){

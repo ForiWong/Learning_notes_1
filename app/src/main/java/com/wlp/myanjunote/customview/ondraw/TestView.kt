@@ -3,6 +3,7 @@ package com.wlp.myanjunote.customview.ondraw
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.wlp.myanjunote.customview.dp
 
@@ -35,18 +36,27 @@ Even Odd：不考虑⽅向。穿插奇数次则为内部，偶数次则为外部
 
 val RADIUS = 100f.dp
 
+private const val TAG = "TestView"
 class TestView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)//anti alias 抗锯齿
     private val path = Path()//路径
     lateinit var pathMeasure: PathMeasure //路径测量
 
+    init{
+        paint.strokeWidth = 8f//设置线条宽度
+        paint.style = Paint.Style.FILL
+        paint.strokeCap = Paint.Cap.ROUND
+    }
+
     //在view的大小变化的时候，在layout()中被调用。 view刚加入到视图层级中时，也会被调用
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        path.reset()
+        Log.d(TAG, "宽：$w 高：$h")//宽：1080 高：2022
+        Log.d(TAG, "宽w：$width 高h：$height")//宽w：1080 高h：2022
+        path.reset()//清除路径上的直线和曲线 Clear any lines and curves from the path, making it empty
         //Direction.CCW  .CW   Direction 方向 顺时针 clockwise 逆时针counter-clockwise
         path.addCircle(width / 2f, height / 2f, RADIUS, Path.Direction.CCW)
-        path.addRect(
+        path.addRect(//j矩形
             width / 2f - RADIUS,
             height / 2f,
             width / 2f + RADIUS,
@@ -55,9 +65,9 @@ class TestView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
         )
         path.addCircle(width / 2f, height / 2f, RADIUS * 1.5f, Path.Direction.CCW)
 
-        pathMeasure = PathMeasure(path, false) //forceClosed 是否闭合 测量path的长度
-        //pathMeasure.length //长度
-        //pathMeasure.getPosTan() //某处的切角
+        pathMeasure = PathMeasure(path, true) //forceClosed 是否闭合 测量path的长度
+        //val len = pathMeasure.length //长度
+        //pathMeasure.getPosTan() //获取某处的坐标或切角
 
         //为啥下面这行代码在这里呢？
         path.fillType = Path.FillType.EVEN_ODD//填充类型，有四种枚举类型，分别代表什么意思呢
@@ -69,10 +79,11 @@ class TestView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     }
 
+    //在这里完成绘制
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         //画线
-        canvas.drawLine(100f, 100f, 200f, 200f, paint)
+        //canvas.drawLine(100f, 100f, 200f, 200f, paint)
         //画圆
         //canvas.drawCircle(width/2f, height/2f, TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200f, resources.displayMetrics), paint)//getResources().getDisplayMetrics()//display显示metrics指标
         //canvas.drawCircle(width/2f, height/2f, Utils.dp2px(100f, context), paint)//getResources().getDisplayMetrics()//display显示metrics指标
@@ -81,5 +92,19 @@ class TestView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
         //绘制路径path
         canvas.drawPath(path, paint)
+
+        //关于pathMeasure
+        val len = pathMeasure.length//长度
+        val step = len / 18
+        paint.color = Color.RED
+        var point = floatArrayOf(0f, 0f)
+        for (i in 0..17){
+            //获取某处的坐标或切角
+            //考虑这样的场景:要实现物体沿直接或曲线运动的效果.这就要算出某个时刻t,物体的坐标.getPosTan就是用来求坐标的
+            pathMeasure.getPosTan(i * step, point, null)
+            canvas.drawPoint(point[0], point[1], paint)
+            Log.d(TAG, "len : $len, ${point[0]}, ${point[1]}")
+        }
+
     }
 }
