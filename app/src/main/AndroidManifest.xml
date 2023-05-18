@@ -25,6 +25,7 @@
         <activity android:name="com.github.moduth.blockcanary.ui.DisplayActivity" android:exported="true"/>
         <activity android:name=".customview.CustomViewActivity"/>
         <activity android:name=".customview.ondraw.OnDrawActivity"/>
+        <activity android:name=".customview.xfermode.XfermodeActivity"/>
 
     </application>
 

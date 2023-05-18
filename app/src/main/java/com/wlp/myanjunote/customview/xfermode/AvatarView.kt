@@ -9,7 +9,7 @@ import com.wlp.myanjunote.customview.dp
 
 private val IMAGE_WIDTH = 200f.dp
 private val IMAGE_PADDING = 20f.dp
-private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)//转换模式
+private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)//图形混合模式
 
 class AvatarView(context: Context?, attrs: AttributeSet?) :
     View(context, attrs) {
@@ -52,14 +52,49 @@ class AvatarView(context: Context?, attrs: AttributeSet?) :
     //获取图片 bitmap，对换取图片进行了优化
     fun getAvatar(width: Int): Bitmap {
         val options = BitmapFactory.Options()
+        //默认值为false，如果设置成true，那么在解码的时候就不会返回bitmap
         options.inJustDecodeBounds = true   //设置这个之后，是初略的读，效率快。 相当于只读图片的四边界限参数
         BitmapFactory.decodeResource(resources, R.drawable.avatar_rengwuxian, options)
         options.inJustDecodeBounds = false
-        options.inDensity = options.outWidth
-        options.inTargetDensity = width   //  目标大小
+        options.inDensity = options.outWidth //原始宽度
+        options.inTargetDensity = width   //目标宽度，由于inScaled默认为true，因此 会自动按照目标宽度/原始宽度的尺寸缩放
         return BitmapFactory.decodeResource(resources, R.drawable.avatar_rengwuxian, options)
     }
 }
+/*
+在Android应用里，最耗费内存的就是图片资源。而且在Android系统中，读取位图Bitmap时，分给虚拟机中的图片的堆栈大小只有8M，
+如果超出了，就会出现OutOfMemory异常。所以，对于图片的内存优化，是Android应用开发中比较重要的内容。
+1) 要及时回收Bitmap的内存
+一般来说，如果能够获得Bitmap对象的引用，就需要及时的调用Bitmap的recycle()方法来释放Bitmap占用的内存空间，而不要等
+Android系统来进行释放。
+　　
+　　// 先判断是否已经回收
+　　if(bitmap != null && !bitmap.isRecycled()){
+　　// 回收并且置为null
+　　bitmap.recycle();
+　　bitmap = null;
+　　}
+　　System.gc();
+
+从上面的代码可以看到，bitmap.recycle()方法用于回收该Bitmap所占用的内存，接着将bitmap置空，最后使用System.gc()调用
+一下系统的垃圾回收器进行回收，可以通知垃圾回收器尽快进行回收。这里需要注意的是，调用System.gc()并不能保证立即开始进行回
+收过程，而只是为了加快回收的到来。
+
+2)压缩图片
+如果知道图片的像素过大，就可以对其进行缩小。那么如何才知道图片过大呢?
+使用BitmapFactory.Options设置inJustDecodeBounds为true后，再使用decodeFile()等方法，并不会真正的分配空间，即解码
+出来的Bitmap为null，但是可计算出原始图片的宽度和高度，即options.outWidth和options.outHeight。通过这两个值，就可以
+知道图片是否过大了。
+　　
+    BitmapFactory.Options opts = new BitmapFactory.Options();
+    // 设置inJustDecodeBounds为true
+　　opts.inJustDecodeBounds = true;
+　　// 使用decodeFile方法得到图片的宽和高
+　　BitmapFactory.decodeFile(path, opts);
+　　// 打印出图片的宽和高
+　　Log.d("example", opts.outWidth + "," + opts.outHeight);
+
+*/
 
 /**
 Xfermode国外有大神称之为过渡模式，这种翻译比较贴切但恐怕不易理解，大家也可以直接称之为图像混合模式，

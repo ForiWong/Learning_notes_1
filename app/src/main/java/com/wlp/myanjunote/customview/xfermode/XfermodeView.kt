@@ -21,7 +21,7 @@ Canvs.saveLayer() 把绘制区域拉到单独的离屏缓冲⾥
 如果不使⽤ saveLayer()，绘制的⽬标区域将总是整个 View 的范围，两个图形
 的交叉区域就错误了。
  * */
-private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
+private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)//图形混合模式
 
 class XfermodeView(context: Context?, attrs: AttributeSet?) :
   View(context, attrs) {
@@ -34,7 +34,7 @@ class XfermodeView(context: Context?, attrs: AttributeSet?) :
   init {
     //在创建的bitmap上画圆、画方
     //画出了圆后面的背景的透明部分
-    val canvas = Canvas(circleBitmap)
+    val canvas = Canvas(circleBitmap)//创建一个透明的背景的canvas，然后设置paint颜色，绘制圆
     paint.color = Color.parseColor("#D81B60")
     canvas.drawOval(50f.dp, 0f.dp, 150f.dp, 100f.dp, paint)
 
