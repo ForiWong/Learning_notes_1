@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.wlp.myanjunote.customview.layoutprocess.Vg1ViewGroup
+        android:id="@+id/vg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.wlp.myanjunote.customview.layoutprocess.K2View
+            android:id="@+id/kv2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <com.wlp.myanjunote.customview.layoutprocess.Vg2ViewGroup
+            android:id="@+id/vg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.wlp.myanjunote.customview.layoutprocess.K3View
+                android:id="@+id/kv3"
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+        </com.wlp.myanjunote.customview.layoutprocess.Vg2ViewGroup>
+
+    </com.wlp.myanjunote.customview.layoutprocess.Vg1ViewGroup>
+
+    <com.wlp.myanjunote.customview.layoutprocess.K1View
+        android:id="@+id/kv1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+</LinearLayout>

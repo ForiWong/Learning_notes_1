@@ -28,6 +28,7 @@
         <activity android:name=".customview.xfermode.XfermodeActivity"/>
         <activity android:name=".customview.animation.AnimationActivity"/>
         <activity android:name=".customview.bitmapanddrawable.DrawableActivity"/>
+        <activity android:name=".customview.layoutprocess.ProcessActivity"/>
 
     </application>
 

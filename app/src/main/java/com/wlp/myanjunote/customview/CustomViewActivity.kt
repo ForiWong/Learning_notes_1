@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.wlp.myanjunote.R
 import com.wlp.myanjunote.customview.animation.AnimationActivity
 import com.wlp.myanjunote.customview.bitmapanddrawable.DrawableActivity
+import com.wlp.myanjunote.customview.layoutprocess.ProcessActivity
 import com.wlp.myanjunote.customview.ondraw.OnDrawActivity
 import com.wlp.myanjunote.customview.xfermode.XfermodeActivity
 
@@ -29,6 +30,10 @@ class CustomViewActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.bitmapanddrawable).setOnClickListener {
             startActivity(Intent(this, DrawableActivity::class.java))
+        }
+
+        findViewById<TextView>(R.id.process).setOnClickListener {
+            startActivity(Intent(this, ProcessActivity::class.java))
         }
 
     }
