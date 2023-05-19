@@ -15,6 +15,7 @@ private val HORIZONTAL_OFFSET = 5.dp
 private val VERTICAL_OFFSET = 23.dp
 private val EXTRA_VERTICAL_OFFSET = 16.dp
 
+//在自定义控件内，使用动画
 class MaterialEditText(context: Context, attrs: AttributeSet) : AppCompatEditText(context, attrs) {
   private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 

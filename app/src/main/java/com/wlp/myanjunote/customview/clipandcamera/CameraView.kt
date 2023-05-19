@@ -31,15 +31,13 @@ class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         camera.setLocation(0f, 0f, -6 * resources.displayMetrics.density)//这里设置了一个动态的，与设备像素密度有关
     }
 
-    //todo 翻页动画效果?
-
     override fun onDraw(canvas: Canvas) {
         /**
         Canvas 的⼏何变换
-        translate(x, y)
-        rotate(degree)
-        scale(x, y)
-        skew(x, y)
+        translate(x, y) 平移
+        rotate(degree) 旋转
+        scale(x, y) 缩放
+        skew(x, y) 倾斜
         重点：Canvas 的⼏何变换⽅法参照的是 View 的坐标系，⽽绘制⽅法（drawXxx()）参照的是 Canvas ⾃⼰的坐标系
          * */
         //（1）平移 可以先平移，再绘制也可以
@@ -94,7 +92,12 @@ class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         值写成与机器的 density 成正⽐的⼀个负值，例如 -6 * density。
          * */
         // 上半部分
-        canvas.save()//todo 与restore()成対出现
+        canvas.save()//与restore()成対出现
+        /**
+         * canvas.save()和canvas.restore()是两个相互匹配出现的，作用是用来保存画布的状态和取出保存的状态的。
+         * save：用来来保存Canvas的状态。save之后，可以调用Canvas的平移、放自缩、旋转百、错切、裁剪等操作。
+         * restore：用来恢复Canvas之前度保存的状态。防止save后对Canvas执行的知操作对后续的绘制有影道响。
+         */
         //旋转
         canvas.translate((BITMAP_PADDING + BITMAP_SIZE / 2), (BITMAP_PADDING + BITMAP_SIZE / 2))
         canvas.rotate(-30f)

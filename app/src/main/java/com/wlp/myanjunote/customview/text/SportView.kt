@@ -99,17 +99,17 @@ class SportView(context: Context, attributeSet: AttributeSet?) : View(context, a
 
 
         // 绘制文字3
-        paint.textSize = 50.dp
+        paint.textSize = 30.dp
         paint.textAlign = Paint.Align.LEFT
         paint.getFontMetrics(fontMetrics)
         paint.getTextBounds("ab-ab", 0, "abab".length, bounds)
         //canvas.drawText("abab",0f, - bounds.top.toFloat(), paint)
-        canvas.drawText("abab", - bounds.left.toFloat(), - bounds.top.toFloat(), paint)
+        canvas.drawText("ab-ab", - bounds.left.toFloat(), - bounds.top.toFloat(), paint)
 
         // 绘制文字4
         paint.textSize = 15.dp
-        //todo 这里的字体大小是15和上面文字字体大小50差很大时，UI下显示发现左边的空隙就不一样了，是因为left的区别
-        //todo 使用 - bounds.left.toFloat() 就可以进行消除了
+        //这里的字体大小是15和上面文字字体大小50差很大时，UI下显示发现左边的空隙就不一样了，是因为left的区别
+        //使用 - bounds.left.toFloat() 就可以进行消除了
         paint.getTextBounds("aba-b", 0, "aba-b".length, bounds)
         //canvas.drawText("aba-b", 0f, - bounds.top.toFloat(), paint)
         canvas.drawText("aba-b", - bounds.left.toFloat(), - bounds.top.toFloat(), paint)

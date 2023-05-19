@@ -4,6 +4,7 @@ import android.animation.*
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.wlp.myanjunote.R
 import com.wlp.myanjunote.customview.animation.view.ProvinceEvaluator
@@ -11,12 +12,19 @@ import com.wlp.myanjunote.customview.dp
 
 /**
  * 属性动画 和 硬件加速
+ * ViewPropertyAnimator 属性动画
+ * ObjectAnimator 自定义属性动画
+ * AnimatorSet 动画集合
+ * PropertyValuesHolder 更加详细的动画：多个属性值作用于同一个view。 属性值持有者
+ * Keyframe 做的就更细了，关键帧。配合使⽤ Keyframe ，对⼀个属性分多个段
+ * Interpolator 插值器，⽤于设置时间完成度到动画完成度的计算公式，直⽩地说即设置动画的速度曲线
+ * TypeEvaluator 自定义估值器⽤于设置动画完成度到属性具体值的计算公式。
  *
  **/
-class MainActivity : AppCompatActivity() {
+class AnimationActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(R.layout.activity_animation)
 
     /**
     属性动画
@@ -38,10 +46,11 @@ class MainActivity : AppCompatActivity() {
       .rotation(90f)
       //可以⽤ setDuration() 来设置持续时间；
       //可以⽤ setStartDelay() 来设置开始延时；
-      .setStartDelay(1000)*/
+      .setStartDelay(1000)
+      .setDuration(1000)*/
 
     /**
-    ObjectAnimator
+    ObjectAnimator 自定义属性动画
     使⽤ ObjectAnimator.ofXxx() 来创建对象，以及使⽤
     ObjectAnimator.start() 来主动启动动画。它的优势在于，可以为⾃定义属性设置动画。
     另外，⾃定义属性需要设置 getter 和 setter ⽅法，并且 setter ⽅法⾥需要调⽤invalidate() 来触发重绘。
@@ -126,7 +135,7 @@ class MainActivity : AppCompatActivity() {
     animator2.interpolator = AccelerateDecelerateInterpolator()//插值器*/
 
     /**
-    TypeEvaluator 估值器
+    TypeEvaluator 自定义估值器
     ⽤于设置动画完成度到属性具体值的计算公式。默认的 ofInt() ofFloat() 已
     经有了⾃带的 IntEvaluator FloatEvaluator ，但有的时候需要⾃⼰设置
     Evaluator。例如，对于颜⾊，需要为 int 类型的颜⾊设置 ArgbEvaluator，⽽不是
@@ -142,14 +151,14 @@ class MainActivity : AppCompatActivity() {
     animator.start()*/
 
     //效果：会变化的字符串动画
-    val animator = ObjectAnimator.ofObject(findViewById<View>(R.id.view), "province", ProvinceEvaluator(), "澳门特别行政区")
-    animator.startDelay = 1000
-    animator.duration = 10000
-    animator.start()
-
-    findViewById<View>(R.id.view).animate()
-      .translationY(200.dp)
-      .withLayer()//withLayer 在属性动画过程中开启硬件加速，临时的。 这个只有对自带的属性才有用
+//    val animator = ObjectAnimator.ofObject(findViewById<View>(R.id.view), "province", ProvinceEvaluator(), "澳门特别行政区")
+//    animator.startDelay = 1000
+//    animator.duration = 10000
+//    animator.start()
+//
+//    findViewById<View>(R.id.view).animate()
+//      .translationY(200.dp)
+//      .withLayer()//withLayer 在属性动画过程中开启硬件加速，临时的。 这个只有对自带的属性才有用
 
     /**
     Listeners 和 View 的点击、⻓按监听器⼀样，Animator 也可以使⽤ setXxxListener()

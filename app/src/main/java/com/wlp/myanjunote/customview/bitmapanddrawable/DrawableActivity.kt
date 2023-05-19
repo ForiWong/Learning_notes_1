@@ -15,13 +15,16 @@ Bitmap 是位图信息的存储，即⼀个矩形图像每个像素的颜⾊信�
 
 （2）Drawable 是什么
 Drawable 是⼀个可以调⽤ Canvas 来进⾏绘制的上层⼯具。调⽤
-Drawable.draw(Canvas) 可以把 Drawable 设置的绘制内容绘制到 Canvas
-中。
+
+drawable.setBounds(0,0,200,200)
+drawable.draw(canvas)
+
+Drawable.draw(Canvas) 可以把 Drawable 设置的绘制内容绘制到 Canvas中。
 Drawable 内部存储的是绘制规则，这个规则可以是⼀个具体的 Bitmap，也可以是
 ⼀个纯粹的颜⾊，甚⾄可以是⼀个抽象的、灵活的描述。Drawable 可以不含有具体
 的像素信息，只要它含有的信息⾜以在 draw(Canvas) ⽅法被调⽤时进⾏绘制就
 够了。
-由于 Drawable 存储的只是绘制规则，因此在它的 draw() ⽅法被调⽤前，需要先
+由于 Drawable 存储的只是绘制规则，相对于bitmap是抽象的概念，因此在它的 draw() ⽅法被调⽤前，需要先
 调⽤ Drawable.setBounds() 来为它设置绘制边界。
 
 （3）Bitmap 和 Drawable 的互相转换
@@ -43,12 +46,12 @@ Drawable -> Bitmap：如果是 BitmapDrawable，使⽤BitmapDrawable.getBitmap()
 需要共享在多个 View 之间的绘制代码，写在 Drawable ⾥，然后在多个⾃
 定义 View ⾥只要引⽤相同的 Drawable 就好，⽽不⽤互相粘贴代码。
 例如？
-股票软件的多个蜡烛图界⾯，可以把共享的蜡烛图界⾯放进去
+todo 股票软件的多个蜡烛图界⾯，可以把共享的蜡烛图界⾯放进去
  **/
-class MainActivity : AppCompatActivity() {
+class DrawableActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(R.layout.activity_drawable)
 
     //互转：Bitmap --> drawable
     /*val bitmap = Bitmap.createBitmap(20, 20, Bitmap.Config.ARGB_8888)

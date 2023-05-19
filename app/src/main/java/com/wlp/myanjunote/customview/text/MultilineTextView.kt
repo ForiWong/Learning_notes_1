@@ -25,7 +25,7 @@ class MultilineTextView(context: Context?, attrs: AttributeSet?) : View(context,
         textSize = 16.dp
     }
     private val bitmap = getAvatar(IMAGE_SIZE.toInt())
-    private val fontMetrics = Paint.FontMetrics()
+    private val fontMetrics = Paint.FontMetrics()//字体规格
 
     override fun onDraw(canvas: Canvas) {
         //（1）大段文字折行效果
@@ -35,6 +35,7 @@ class MultilineTextView(context: Context?, attrs: AttributeSet?) : View(context,
 
         //（2）先绘制图片，然后一大段文字，如何让文字环绕图片折行显示
         canvas.drawBitmap(bitmap, width - IMAGE_SIZE, IMAGE_PADDING, paint)
+
         paint.getFontMetrics(fontMetrics)
 
         val measuredWidth = floatArrayOf(0f)

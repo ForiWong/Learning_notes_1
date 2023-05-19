@@ -36,6 +36,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/xfer" />
 
+        <com.wlp.myanjunote.customview.text.MultilineTextView
+            android:id="@+id/multiline"
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatarView" />
+
+        <com.wlp.myanjunote.customview.text.SportView
+            android:id="@+id/sport"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/multiline" />
+
+        <com.wlp.myanjunote.customview.clipandcamera.CameraView
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sport" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

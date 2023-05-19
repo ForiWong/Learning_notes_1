@@ -15,8 +15,8 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     set(value) {//这个是什么语法 相当于setter()方法
       field = value //设置属性值
       invalidate()
-    //Invalidate the whole view. If the view is visible, 如果view是可见的，就会让控件失效，到下一帧的
-    // 时候就会被系统重新绘制
+    // Invalidate the whole view. If the view is visible,
+    // 如果view是可见的，就会让控件失效，到下一帧的时候就会被系统重新绘制
     }
 
   init {

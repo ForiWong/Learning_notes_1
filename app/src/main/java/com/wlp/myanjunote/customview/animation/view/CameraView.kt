@@ -11,6 +11,7 @@ import com.wlp.myanjunote.customview.dp
 private val BITMAP_SIZE = 200.dp
 private val BITMAP_PADDING = 100.dp
 
+//todo
 class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bitmap = getAvatar(BITMAP_SIZE.toInt())
@@ -66,7 +67,7 @@ class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         canvas.withSave {//相当于 canvas.save() &  restore()
             canvas.translate(BITMAP_PADDING + BITMAP_SIZE / 2, BITMAP_PADDING + BITMAP_SIZE / 2)
             canvas.rotate(-flipRotation)
-            camera.save()//todo camera.save() 与 restore()
+            camera.save()//camera.save() 与 restore()
             camera.rotateX(bottomFlip)
             camera.applyToCanvas(canvas)
             camera.restore()//
