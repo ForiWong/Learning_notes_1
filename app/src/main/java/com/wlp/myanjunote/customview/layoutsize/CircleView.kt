@@ -8,7 +8,7 @@ import android.view.View
 import com.wlp.myanjunote.customview.dp
 
 private val RADIUS = 100.dp
-private val PADDING = 100.dp
+private val PADDING = 10.dp
 
 /**
 （2）完全自定义 View 的尺寸

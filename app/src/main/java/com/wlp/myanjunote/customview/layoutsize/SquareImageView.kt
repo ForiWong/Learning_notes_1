@@ -59,7 +59,7 @@ class SquareImageView(context: Context, attrs: AttributeSet?) : AppCompatImageVi
 
   //用 layout() 还是 onMeasure()
   override fun layout(l: Int, t: Int, r: Int, b: Int) {
-    super.layout(l, t, r, b)
+    //super.layout(l, t, r, b)
     val width = r - l
     val height = b - t
     val size = min(width, height)

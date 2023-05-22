@@ -1,39 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout1"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <com.wlp.myanjunote.customview.layoutprocess.Vg1ViewGroup
-        android:id="@+id/vg1"
+    <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.wlp.myanjunote.customview.layoutprocess.K2View
-            android:id="@+id/kv2"
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <com.wlp.myanjunote.customview.layoutprocess.Vg2ViewGroup
-            android:id="@+id/vg2"
+        <com.wlp.myanjunote.customview.layoutprocess.Vg1ViewGroup
+            android:id="@+id/vg1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.wlp.myanjunote.customview.layoutprocess.K3View
-                android:id="@+id/kv3"
+            <com.wlp.myanjunote.customview.layoutprocess.K2View
+                android:id="@+id/kv2"
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-        </com.wlp.myanjunote.customview.layoutprocess.Vg2ViewGroup>
+            <com.wlp.myanjunote.customview.layoutprocess.Vg2ViewGroup
+                android:id="@+id/vg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </com.wlp.myanjunote.customview.layoutprocess.Vg1ViewGroup>
+                <com.wlp.myanjunote.customview.layoutprocess.K3View
+                    android:id="@+id/kv3"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
 
-    <com.wlp.myanjunote.customview.layoutprocess.K1View
-        android:id="@+id/kv1"
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+            </com.wlp.myanjunote.customview.layoutprocess.Vg2ViewGroup>
 
-</LinearLayout>
+        </com.wlp.myanjunote.customview.layoutprocess.Vg1ViewGroup>
+
+        <com.wlp.myanjunote.customview.layoutprocess.K1View
+            android:id="@+id/kv1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <com.wlp.myanjunote.customview.layoutsize.SquareImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/avatar_rengwuxian" />
+
+        <com.wlp.myanjunote.customview.layoutsize.CircleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.wlp.myanjunote.customview.layoutlayout.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123测试啊" />
+
+        <com.wlp.myanjunote.customview.layoutlayout.TagLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="123sdfdffdfgg0"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="24sp"
+                android:text="123sdfdffdfgg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="123sdfdffdfgg2"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </com.wlp.myanjunote.customview.layoutlayout.TagLayout>
+
+    </LinearLayout>
+
+</ScrollView>
