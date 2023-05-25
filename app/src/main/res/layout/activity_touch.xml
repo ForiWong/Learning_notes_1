@@ -16,4 +16,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.wlp.myanjunote.customview.touchscalableimageview.ScalableImageView
+        android:visibility="gone"
+        android:id="@+id/scale"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <com.wlp.myanjunote.customview.touchmultitouch.MultiTouchView1
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scale" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

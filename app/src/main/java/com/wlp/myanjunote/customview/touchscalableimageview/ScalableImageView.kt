@@ -22,6 +22,14 @@ private const val EXTRA_SCALE_FACTOR = 1.5f
 
 /**
 双向滑动的ScalableImageView
+===
+GestureDetector 手势检测
+OnGestureListener 手势检测监听器
+OnDoubleTapListener 双击监听器
+OverScroller 用于自动计算滑动的偏移
+ScaleGestureDetector 缩放检测
+ScaleGestureListener 缩放检测监听器
+===
 
 【1】GestureDetector】手势检测，像是view的一个外挂检测器，帮你完成了检测。
 用于在点击和长按之外，增加其他手势的监听，例如双击、滑动。通过在
