@@ -2,6 +2,7 @@ package com.wlp.myanjunote.customview.touch
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
@@ -14,7 +15,8 @@ import android.view.View
 【1】自定义单个View 的触摸反馈
 1.重写 onTouchEvent()，在方法内部定制触摸反馈算法
 1）是否消费事件取决于 ACTION_DOWN 事件是否返回 true
-2）MotionEvent
+2）MotionEvent触摸事件
+
 # getActionMasked() 和 getAction() 怎么选？
 ## 选 getActionMasked()。因为到了多点触控时代， getAction() 已经不够准确。
 ## 那为什么有些地方（包括 Android 源码里）依然在用getAction()？ 因为它们的场景不考虑多点触控
@@ -39,7 +41,6 @@ return true
 （2）并且，这个事件序列之后事件也是被消费了。
 此外，只在DOWN事件时候返回，其他事件不判断。
 return TRUE 作用等同于event.actionMasked == MotionEvent.ACTION_DOWN
-
 也就是你宣布消费所有权只跟DOWN有关，只能在DOWN事件时宣布消费TRUE，或者FALSE。
 
 
@@ -123,9 +124,11 @@ Activity.dispatchTouchEvent()
  */
 class TouchView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
   override fun onTouchEvent(event: MotionEvent): Boolean {
-    //如果直接返回true,就不没有调用设置的点击事件了，长按也没有用
+      Log.d("event:", event.actionMasked.toString())
+    //<1>如果直接返回true,就不调用设置的点击事件了，长按也没有用
     //return true
 
+    //<2>
     //return super.onTouchEvent(event);
 
     if (event.actionMasked == MotionEvent.ACTION_UP) {//如果触发抬起事件，就认为是点击了

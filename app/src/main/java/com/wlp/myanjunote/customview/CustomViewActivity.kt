@@ -9,6 +9,7 @@ import com.wlp.myanjunote.customview.animation.AnimationActivity
 import com.wlp.myanjunote.customview.bitmapanddrawable.DrawableActivity
 import com.wlp.myanjunote.customview.layoutprocess.ProcessActivity
 import com.wlp.myanjunote.customview.ondraw.OnDrawActivity
+import com.wlp.myanjunote.customview.touch.TouchActivity
 import com.wlp.myanjunote.customview.xfermode.XfermodeActivity
 
 class CustomViewActivity : AppCompatActivity() {
@@ -34,6 +35,10 @@ class CustomViewActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.process).setOnClickListener {
             startActivity(Intent(this, ProcessActivity::class.java))
+        }
+
+        findViewById<TextView>(R.id.touch).setOnClickListener {
+            startActivity(Intent(this, TouchActivity::class.java))
         }
 
     }

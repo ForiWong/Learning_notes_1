@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.wlp.myanjunote.customview.CustomViewActivity
-import com.wlp.myanjunote.customview.touch.MainActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var view : View
