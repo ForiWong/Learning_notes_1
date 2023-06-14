@@ -31,4 +31,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
+    <TextView
+        android:id="@+id/to_ot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="other"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_custom_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.wlp.myanjunote.customview.CustomViewActivity
+import com.wlp.myanjunote.ot.scrollconflict.ScrollConflictActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var view : View
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.to_custom_view).setOnClickListener {
             startActivity(Intent(this, CustomViewActivity::class.java))
+        }
+
+        findViewById<TextView>(R.id.to_ot).setOnClickListener {
+            startActivity(Intent(this, ScrollConflictActivity::class.java))
         }
     }
 
