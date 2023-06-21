@@ -1,0 +1,54 @@
+LiveData
+MutableLiveData： public class MutableLiveData<T> extends LiveData<T>
+
+LiveEventBus
+ObservableField
+
+LiveData是一个可被观察的数据容器类。什么意思呢？我们可以将LiveData理解为一个数据的容器，它将数据包装
+起来，使得数据成为“被观察者”，页面成为“观察者”。这样，当该数据发生变化时，页面能够获得通知，进而
+更新UI。
+
+进一步区别一下ViewModel和LiveData。ViewModel用于存放页面所需的各种数据，它还包括一些业务逻辑等，比如
+我们可以在ViewModel对数据进行加工，获取等操作。而对页面来说，它并不关心这些业务逻辑，它只关心需要展示
+的数据是什么，并且希望在数据发生变化时，能及时得到通知并做出更新。LiveData的作用就是，在ViewModel中的
+数据发生变化时通知页面。从LiveData（实时数据）这个名字，我们也能推测出，它的特性与作用。
+
+在页面中，我们通过LiveData.observe()方法对LiveData包装的数据进行观察，反过来，当我们想要修改LiveData
+包装的数据时，可通过LiveData.postValue()/LiveData.setValue()来完成。postValue()是在非UI线程中使用，
+如果在UI线程中，则使用setValue()方法。
+
+所以，LiveData能够感知页面的生命周期。它可以检测页面当前的状态是否为激活状态，或者页面是否被销毁。只
+有在页面处于激活状态（Lifecycle.State.ON_STARTED或Lifecycle.State.ON_RESUME）时，页面才会收到来自
+LiveData的通知，如果页面被销毁（Lifecycle.State.ON_DESTROY），那么LiveData会自动清除与页面的关联，
+从而避免了可能引发的内存泄漏问题。
+
+/**
+ * 初始化LiveEventBus
+ * 1、supportBroadcast配置支持跨进程、跨APP通信
+ * 2、配置LifecycleObserver（如Activity）接收消息的模式（默认值true）：
+ * true：整个生命周期（从onCreate到onDestroy）都可以实时收到消息
+ * false：激活状态（Started）可以实时收到消息，非激活状态（Stoped）无法实时收到消息，需等到Activity重新变成激活状
+ * 态，方可收到消息
+ * 3、autoClear
+* 配置在没有Observer关联的时候是否自动清除LiveEvent以释放内存（默认值false）
+* */
+
+LiveEventBus.
+    config().
+    supportBroadcast(this).
+    lifecycleObserverAlwaysActive(true).
+    autoClear(false);
+
+LiveData是Android Architecture Components提出的框架。LiveData是一个可以被观察的数据持有类，它可以感知
+并遵循Activity、Fragment或Service等组件的生命周期。正是由于LiveData对组件生命周期可感知特点，因此可以
+做到仅在组件处于生命周期的激活状态时才更新UI数据。
+
+LiveData需要一个观察者对象，一般是Observer类的具体实现。当观察者的生命周期处于STARTED或RESUMED状态时，
+LiveData会通知观察者数据变化；在观察者处于其他状态时，即使LiveData的数据变化了，也不会通知。
+
+使用ViewModel+Data Binding解决内存泄漏问题时用到了ObservableInt/ObservableField，但其实还可以使用LiveData，
+它不仅可以实现与ObservableField相同的功能，而且有以下好处:
+ObservableField只有在数据发生改变时UI才会收到通知，而LiveData不同，只要你postValue或者setValue，UI都
+会收到通知，不管数据有无变化;
+LiveData能感知Activity的生命周期，在Activity不活动的时候不会触发，例如一个Activity不在任务栈顶部.
+
