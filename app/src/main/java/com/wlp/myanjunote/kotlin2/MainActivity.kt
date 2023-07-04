@@ -13,7 +13,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.wlp.myanjunote.kotlin2.databinding.ActivityMainBinding
+import com.wlp.myanjunote.R
+import com.wlp.myanjunote.databinding.ActivityMainBinding
 
 import kotlinx.coroutines.GlobalScope//coroutines 协程，协同程序，并发 GlobalScope 全局范围
 import kotlinx.coroutines.delay
@@ -35,20 +36,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //val navController = findNavController(R.id.nav_host_fragment_content_main)
+        //appBarConfiguration = AppBarConfiguration(navController.graph)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
 
         //lambda
-        binding.fab.setOnClickListener { view ->
+        binding.view.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
 
-        binding.fab.setOnClickListener { Toast.makeText(this, "haha", Toast.LENGTH_LONG).show() }
-        binding.fab.setOnClickListener { view -> Toast.makeText(this, "haha", Toast.LENGTH_LONG).show() }
+        binding.view.setOnClickListener { Toast.makeText(this, "haha", Toast.LENGTH_LONG).show() }
+        binding.view.setOnClickListener { view -> Toast.makeText(this, "haha", Toast.LENGTH_LONG).show() }
 
         //testKt()
         doTest()
@@ -86,14 +86,14 @@ class MainActivity : AppCompatActivity() {
 
         val listener = View.OnClickListener{ view ->
             val text = when (view.id){
-                R.id.fab -> "FirstButton"
+                R.id.view -> "FirstButton"
                 else -> "Other"
             }
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
         }
 
         //object定义一个匿名内部类
-        binding.fab.setOnClickListener(
+        binding.view.setOnClickListener(
             object : View.OnClickListener {
                 override fun onClick(v: View?) {
                     println("click--1")
@@ -102,37 +102,37 @@ class MainActivity : AppCompatActivity() {
         )
 
         //sam转换为 lambda
-        binding.fab.setOnClickListener(View.OnClickListener { v: View? ->
+        binding.view.setOnClickListener(View.OnClickListener { v: View? ->
             println("${v?.id} click}")
         })
 
         // Kotlin 的 Lambda 表达式是不需要 SAM Constructor的，所以它也可以被删掉
-        binding.fab.setOnClickListener({ v: View? ->
+        binding.view.setOnClickListener({ v: View? ->
             println("${v?.id} click}")
         })
 
         // Kotlin 支持类型推导，所以 View? 可以被删掉：
-        binding.fab.setOnClickListener({ v ->
+        binding.view.setOnClickListener({ v ->
             println("${v?.id} click}")
         })
 
         //当 Kotlin Lambda 表达式只有一个参数的时候，它可以被写成 it
-        binding.fab.setOnClickListener({ it ->
+        binding.view.setOnClickListener({ it ->
             println("${it?.id} click}")
         })
 
         //it -> 也是可以被省略的
-        binding.fab.setOnClickListener({
+        binding.view.setOnClickListener({
             println("${it?.id} click}")
         })
 
         //当 Kotlin Lambda 作为函数的最后一个参数时，Lambda 可以被挪到外面
-        binding.fab.setOnClickListener(){
+        binding.view.setOnClickListener(){
             println("${it?.id} click}")
         }
 
         //当 Kotlin 只有一个 Lambda 作为函数参数时，() 可以被省略
-        binding.fab.setOnClickListener{
+        binding.view.setOnClickListener{
             println("${it?.id} click}")
         }
 
@@ -173,26 +173,4 @@ class MainActivity : AppCompatActivity() {
         log("--end--")
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
 }
