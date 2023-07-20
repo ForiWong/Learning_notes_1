@@ -15,6 +15,12 @@ import android.widget.Toast;
 
 import com.wlp.myanjunote.R;
 
+/**
+ * From :
+ * https://github.com/jzj1993/JavaTcpSocket
+ * 基于Java的TCP Socket通信详解（计算机端/Android手机端）
+ * https://www.paincker.com/java-tcp-socket/
+ */
 public class MainActivity extends Activity implements OnClickListener {
 
 	private Button bnConnect;
