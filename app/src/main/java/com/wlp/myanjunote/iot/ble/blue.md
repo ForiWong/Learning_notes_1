@@ -6,8 +6,8 @@ https://blog.csdn.net/xiaoxiaopengbo/article/details/107466841
 蓝牙核心系统结构
 蓝牙协议分为四个层次：物理层（Physical Layer）、逻辑层（Logical Layer）、L2CAP Layer
 和应用层（APP Layer）。
-![bt1](../../../../../image/bt1.png)
-![bt2](../../../../../image/bt2.png)
+![bt1](../../../../../../image/bt1.png)
+![bt2](../../../../../../image/bt2.png)
 
 1、物理层
 负责提供数据传输的物理通道（通常称为信道）。通常情况下，一个通信系统中存在几种不同类型的信道，如控制信道、
@@ -21,7 +21,7 @@ https://blog.csdn.net/xiaoxiaopengbo/article/details/107466841
 3、BLE链路层的状态机
 包含Standby、Advertising、Scanning、Initiating、Connection、Synchronization、Isochronous Broadcasting state，
 转换图如下所示
-![bt3](../../../../../image/bt3.png)
+![bt3](../../../../../../image/bt3.png)
 Master：从Initiating state进入Connection state
 Slave：从Advertising state进入Connection state
 
