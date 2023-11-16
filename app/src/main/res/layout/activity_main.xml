@@ -46,4 +46,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_custom_view" />
 
+    <com.wlp.myanjunote.customview.sample.MultiElementProgress
+        android:id="@+id/multi"
+        android:layout_width="250dp"
+        android:layout_height="220dp"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/to_ot"/>
+
+    <com.wlp.myanjunote.customview.sample.LineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/multi"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
