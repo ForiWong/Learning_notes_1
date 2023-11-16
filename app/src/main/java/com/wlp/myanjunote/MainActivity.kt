@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.wlp.myanjunote.customview.CustomViewActivity
 import com.wlp.myanjunote.customview.Utils
 import com.wlp.myanjunote.customview.sample.LineChart
+import com.wlp.myanjunote.customview.sample.cart.MainActivity
 import com.wlp.myanjunote.ot.scrollconflict.ScrollConflictActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<TextView>(R.id.to_ot).setOnClickListener {
-            startActivity(Intent(this, ScrollConflictActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         initView()

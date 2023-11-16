@@ -32,6 +32,7 @@
         <activity android:name=".customview.layoutprocess.ProcessActivity"/>
         <activity android:name=".customview.touch.TouchActivity"/>
         <activity android:name=".ot.scrollconflict.ScrollConflictActivity"/>
+        <activity android:name=".customview.sample.cart.MainActivity"/>
 
     </application>
 
