@@ -112,6 +112,15 @@
         <attr name="dottedLineWidth" />
         <attr name="foreStartColor" />
         <attr name="foreEndColor" />
-
     </declare-styleable>
+
+    <declare-styleable name="CirclePercentView">
+        <attr name="circleBgColor" format="reference" />
+        <attr name="circleProgressColor" format="reference" />
+        <attr name="circleRadius" format="integer" />
+        <attr name="circleStartColor" format="reference" />
+        <attr name="circleEndColor" format="reference" />
+        <attr name="circleIsGradient" format="boolean" />
+    </declare-styleable>
+
 </resources>

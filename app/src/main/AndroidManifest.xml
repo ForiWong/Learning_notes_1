@@ -4,8 +4,8 @@
     package="com.wlp.myanjunote">
 
     <application
-        android:allowBackup="true"
         android:name=".AppApplication"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -23,16 +23,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.github.moduth.blockcanary.ui.DisplayActivity" android:exported="true"/>
-        <activity android:name=".customview.CustomViewActivity"/>
-        <activity android:name=".customview.ondraw.OnDrawActivity"/>
-        <activity android:name=".customview.xfermode.XfermodeActivity"/>
-        <activity android:name=".customview.animation.AnimationActivity"/>
-        <activity android:name=".customview.bitmapanddrawable.DrawableActivity"/>
-        <activity android:name=".customview.layoutprocess.ProcessActivity"/>
-        <activity android:name=".customview.touch.TouchActivity"/>
-        <activity android:name=".ot.scrollconflict.ScrollConflictActivity"/>
-        <activity android:name=".customview.sample.cart.MainActivity"/>
+        <activity
+            android:name="com.github.moduth.blockcanary.ui.DisplayActivity"
+            android:exported="true" />
+        <activity android:name=".customview.CustomViewActivity" />
+        <activity android:name=".customview.ondraw.OnDrawActivity" />
+        <activity android:name=".customview.xfermode.XfermodeActivity" />
+        <activity android:name=".customview.animation.AnimationActivity" />
+        <activity android:name=".customview.bitmapanddrawable.DrawableActivity" />
+        <activity android:name=".customview.layoutprocess.ProcessActivity" />
+        <activity android:name=".customview.touch.TouchActivity" />
+        <activity android:name=".ot.scrollconflict.ScrollConflictActivity" />
+        <activity android:name=".customview.sample.cart.MainActivity" />
+
+        <activity android:name=".customview.sample.easy.activity.PercentActivity" />
+        <activity android:name=".customview.sample.easy.activity.BarAndLineActivity" />
+        <activity android:name=".customview.sample.easy.activity.DoubleBarCharActivity" />
+        <activity android:name=".customview.sample.easy.MainActivity" />
+        <activity android:name=".customview.sample.easy.activity.LineChartActivity" />
+        <activity android:name=".customview.sample.easy.activity.BarChartActivity" />
+        <activity android:name=".customview.sample.easy.activity.PieChartActivity" />
+        <activity android:name=".customview.sample.easy.activity.HollowPieChartActivity" />
+        <activity android:name=".customview.sample.easy.activity.ScaleActivity" />
+        <activity android:name=".customview.sample.easy.activity.HollowPieChartNewActivity" />
+        <activity android:name=".customview.sample.easy.activity.CombineChartActivity" />
 
     </application>
 

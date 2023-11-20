@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.wlp.myanjunote.customview.CustomViewActivity
 import com.wlp.myanjunote.customview.Utils
 import com.wlp.myanjunote.customview.sample.LineChart
-import com.wlp.myanjunote.customview.sample.cart.MainActivity
+import com.wlp.myanjunote.customview.sample.easy.MainActivity
 import com.wlp.myanjunote.ot.scrollconflict.ScrollConflictActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
