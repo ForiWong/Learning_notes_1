@@ -35,9 +35,9 @@
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp30"
-        app:circleBgColor="@color/gray"
-        app:circleIsGradient="true"
-        app:circleProgressColor="@color/blue" />
+        app:ccBgColor="@color/gray"
+        app:ccIsGradient="true"
+        app:ccProgressColor="@color/blue" />
 
     <com.wlp.myanjunote.customview.sample.easy.widget.CirclePercentView
         android:id="@+id/circle_percent1"
@@ -45,7 +45,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp30"
-        app:circleBgColor="@color/gray"
-        app:circleIsGradient="true"
-        app:circleProgressColor="@color/blue" />
+        app:ccBgColor="@color/gray"
+        app:ccIsGradient="true"
+        app:ccProgressColor="@color/blue" />
 </LinearLayout>

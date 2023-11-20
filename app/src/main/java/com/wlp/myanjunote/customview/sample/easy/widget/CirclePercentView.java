@@ -43,12 +43,12 @@ public class CirclePercentView extends View {
     public CirclePercentView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CirclePercentView);
-        mBgColor = typedArray.getColor(R.styleable.CirclePercentView_circleBgColor, ContextCompat.getColor(context, R.color.gray));
-        mProgressColor = typedArray.getColor(R.styleable.CirclePercentView_circleProgressColor, ContextCompat.getColor(context, R.color.blue));
-        mRadius = typedArray.getInt(R.styleable.CirclePercentView_circleRadius, WIDTH_RADIUS_RATIO);
-        isGradient = typedArray.getBoolean(R.styleable.CirclePercentView_circleIsGradient, false);
-        mStartColor = typedArray.getColor(R.styleable.CirclePercentView_circleStartColor, ContextCompat.getColor(context, R.color.blue));
-        mEndColor = typedArray.getColor(R.styleable.CirclePercentView_circleEndColor, ContextCompat.getColor(context, R.color.green));
+        mBgColor = typedArray.getColor(R.styleable.CirclePercentView_ccBgColor, ContextCompat.getColor(context, R.color.gray));
+        mProgressColor = typedArray.getColor(R.styleable.CirclePercentView_ccProgressColor, ContextCompat.getColor(context, R.color.blue));
+        mRadius = typedArray.getInt(R.styleable.CirclePercentView_ccRadius, WIDTH_RADIUS_RATIO);
+        isGradient = typedArray.getBoolean(R.styleable.CirclePercentView_ccIsGradient, false);
+        mStartColor = typedArray.getColor(R.styleable.CirclePercentView_ccStartColor, ContextCompat.getColor(context, R.color.blue));
+        mEndColor = typedArray.getColor(R.styleable.CirclePercentView_ccEndColor, ContextCompat.getColor(context, R.color.green));
         typedArray.recycle();
         init(context);
     }

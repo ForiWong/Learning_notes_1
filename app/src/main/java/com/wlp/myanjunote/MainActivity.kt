@@ -13,11 +13,11 @@ import com.wlp.myanjunote.customview.Utils
 import com.wlp.myanjunote.customview.sample.LineChart
 import com.wlp.myanjunote.customview.sample.easy.MainActivity
 import com.wlp.myanjunote.ot.scrollconflict.ScrollConflictActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     lateinit var view : View
+    lateinit var chart : LineChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        chart = findViewById<LineChart>(R.id.chart)
         val options = chart.getOptions()
         //X轴
         val xAxisOptions = options.xAxisOptions

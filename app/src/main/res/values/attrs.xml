@@ -115,12 +115,21 @@
     </declare-styleable>
 
     <declare-styleable name="CirclePercentView">
-        <attr name="circleBgColor" format="reference" />
-        <attr name="circleProgressColor" format="reference" />
-        <attr name="circleRadius" format="integer" />
-        <attr name="circleStartColor" format="reference" />
-        <attr name="circleEndColor" format="reference" />
-        <attr name="circleIsGradient" format="boolean" />
+        <attr name="ccBgColor" format="reference" />
+        <attr name="ccProgressColor" format="reference" />
+        <attr name="ccRadius" format="integer" />
+        <attr name="ccStartColor" format="reference" />
+        <attr name="ccEndColor" format="reference" />
+        <attr name="ccIsGradient" format="boolean" />
     </declare-styleable>
+    <!--
+    这里出现类似如下的报错，这是离大谱了，修改name就可以了。
+    参考 https://stackoverflow.com/questions/72360620/illegal-char-at-index-40-com-recognize-app-mergedebugresources-33-values-v
+    所以，对于这样的，特别的问题，stackoverflow是首选。
+    com.android.aaptcompiler.ResourceCompilationException:
+    Resource compilation failed
+    (Failed to compile values resource file C:\Users\hesam\AndroidStudioProjects\RecognizeProject\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir\values\values.xml.
+    Cause: java.nio.file.InvalidPathException: Illegal char <:> at index 40: com.recognize.app-mergeDebugResources-33:/values/values.xml).
+    -->
 
 </resources>
