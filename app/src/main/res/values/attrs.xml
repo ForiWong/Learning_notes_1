@@ -126,6 +126,7 @@
     这里出现类似如下的报错，这是离大谱了，修改name就可以了。
     参考 https://stackoverflow.com/questions/72360620/illegal-char-at-index-40-com-recognize-app-mergedebugresources-33-values-v
     所以，对于这样的，特别的问题，stackoverflow是首选。
+    稀奇古怪的bug，提示日志说没用吧，也是有用，但是定位不到地方。
     com.android.aaptcompiler.ResourceCompilationException:
     Resource compilation failed
     (Failed to compile values resource file C:\Users\hesam\AndroidStudioProjects\RecognizeProject\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir\values\values.xml.

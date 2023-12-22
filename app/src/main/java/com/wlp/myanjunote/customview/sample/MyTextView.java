@@ -11,6 +11,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+//属性动画，实现文本view的，文字颜色是会变化的
 public class MyTextView extends View {
     private float progress = 0.0f;
 
